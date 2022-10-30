@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema ({
   {type:Date,
   default:Date.now}
 
-})
+});
 //we need a collection
 const User = new mongoose.model ("User", userSchema);
 module.exports=User;

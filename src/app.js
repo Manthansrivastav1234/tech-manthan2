@@ -27,13 +27,10 @@ hbs.registerPartials(partialspath);
 app.get("/",(req,res)=>{
   res.render("index");
 });
-app.get("/contact",(req,res)=>{
-  res.render("contact");
-});
 app.post("/contact",async(req,res)=>
 {try{
   const userData=new User(req.body);
-await  userdata.save();
+await  userData.save();
 res.status(201).render("index");
 
 
@@ -41,10 +38,6 @@ res.status(201).render("index");
 {
   res.status(500).send(error);
 }
-
-
-
-
 });
 app.listen(port,()=>
 {
