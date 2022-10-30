@@ -30,22 +30,19 @@ app.get("/",(req,res)=>{
 app.get("/contact",(req,res)=>{
   res.render("contact");
 });
-app.post("/contact",(req,res)=>
-{
+app.post("/contact",async(req,res)=>
+{try{
   const userData=new User(req.body);
-    User.insertMany(userData,function(err)
- {
-   if(err)
-   {
-     console.log("yes ther is error");
-   }
-   else
-   {
-     console.log("Not any error");
-   }
+await  userdata.save();
+res.status(201).render("index");
 
-  res.render("index");
-});
+
+}catch (error)
+{
+  res.status(500).send(error);
+}
+
+
 
 
 });
