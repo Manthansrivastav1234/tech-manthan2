@@ -27,14 +27,16 @@ hbs.registerPartials(partialspath);
 app.get("/",(req,res)=>{
   res.render("index");
 });
+//like promise
+//async is used to return promise
 app.post("/contact",async(req,res)=>
-{try{
+{try{//like resolve in promise
   const userData=new User(req.body);
-await  userData.save();
+await  userData.save();//wait and do the rest of work
 res.status(201).render("index");
 
 
-}catch (error)
+}catch (error)//catch is used to handle errors//like reject in promise
 {
   res.status(500).send(error);
 }
